@@ -15,23 +15,24 @@ public class GameTableController : MonoBehaviour {
 	private int deckSize;
 	private CardController[] deck;
 
-	public void ShuffleDeck(){
-
-		//deck has 8 cards right now
-		//find the length of a card's faces array
-
-		deckSize = playerCard.GetComponent<CardController> ().faces.Length;
-		print ("Shuffling " + deckSize + " cards!");
-
-	}
-
 	// Use this for initialization
 	void Start () {
-		//ShuffleDeck ();
+		gameDeck.GetComponent<DeckController> ().Shuffle ();
+		DealCardsToPlayer ();
+	}
+
+	void DealCardsToPlayer() {
+		DeckController deckC = gameDeck.GetComponent<DeckController> ();
+		HandController handC = playerHand.GetComponent<HandController> ();
+
+		for (int x = 0; x<handC.cards.Length; x++) {
+			handC.AddCard(x, deckC.TopCardIndex(), true);
+			deckC.HideTopCard();
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
 }
