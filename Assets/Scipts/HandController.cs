@@ -8,9 +8,18 @@ public class HandController : MonoBehaviour {
 
 	// Use this for initialization
 
-	public void AddCard (int cardId, int cardIndex, bool showFaceUp){
+	public void AddCard (int cardId, int cardIndex, bool showFaceUp) {
+
+		// cardID -> Determines which card spot in the hand we are adding a card to
+		// cardIndex -> Determines which card texture to display when the card runs showFace()
+		// showFaceUp -> Tells us to either show the face or the card back
+
 		CardController cardController = cards [cardId].GetComponent<CardController> ();
+
+		// Assigning the card the index being passed in
 		cardController.cardIndex = cardIndex;
+
+		// Displays the card face up or face down
 		if (showFaceUp) {
 			cardController.ShowFace ();
 		} else {
@@ -19,6 +28,8 @@ public class HandController : MonoBehaviour {
 	}	
 
 	public void Reset() {
+
+		// Goes through the hand and clears out all the cards in hand
 
 		CardController firstCardController = cards [0].GetComponent<CardController> ();
 		firstCardController.cardIndex = 0;
