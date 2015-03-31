@@ -10,29 +10,37 @@ public class DeckController : MonoBehaviour {
 
 	public void Shuffle() {
 
-		// Gets the first card n the deck
+		// Gets the first card in the deck
 		CardController aCard = cards [0].GetComponent<CardController> ();
 
 		// Determining how many different card faces a card can have
 		int facesInt = aCard.faces.Length;
 
 		// Generating an array that stores all the cards that should be in the deck
-		randomFaces = new int[facesInt];
-		for (int x = 0; x<facesInt; x++) {
-			randomFaces[x] = x;
+		randomFaces = new int[facesInt*2]; //Deck contains 2 copies of all cards so multiplying by 2
+
+		for (int x = 0; x<randomFaces.Length; x++) {
+
+			// We know there are two copies of each card, so once we've made a set make a new set
+			if (x >= facesInt) {
+				randomFaces[x] = x - facesInt;
+			} else {
+				randomFaces[x] = x;
+			}
 		}
 
 		// Assigns each card in the deck an index and puts the card face down
-		for (int x = 0; x<cards.Length; x++) {
+		for (int x = 0; x <16; x++) {//<cards.Length; x++) {
 			CardController thisCard = cards[x].GetComponent<CardController> ();
 			thisCard.cardIndex = randomFaces[x];
-			thisCard.ShowBackground();
+			//thisCard.ShowBackground();
+			thisCard.ShowFace();
 
 			// keeps track where the top card pointer is at
 			topCard = x;
 		}
 
-		print ("Assigned all cards in deck an index");
+		print ("Assigned all "+cards.Length+" cards in deck an index");
 	}
 
 	public void HideTopCard() {
