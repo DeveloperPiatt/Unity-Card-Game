@@ -104,6 +104,10 @@ public class DeckController : MonoBehaviour {
 		return tCard.cardIndex;
 	}
 
+	public int CardsInDeck() {
+		return topCard;
+	}
+
 	// Use this for initialization
 	void Start () {
 

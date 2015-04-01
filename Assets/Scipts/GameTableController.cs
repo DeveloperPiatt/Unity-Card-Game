@@ -44,26 +44,29 @@ public class GameTableController : MonoBehaviour {
 		gameDeck.GetComponent<DeckController> ().Shuffle ();
 
 		// Dealing out cards
-		DealCardsToPlayer ();
+		DealCardsToHand (playerHand, true);
+		DealCardsToHand (cpu2Hand, false);
+		DealCardsToHand (cpu3Hand, false);
+		DealCardsToHand (cpu4Hand, false);
 	}
 
-	void DealCardsToPlayer() {
-
+	void DealCardsToHand(GameObject hand, bool faceUp) {
 		// Getting a pointer to the deck and player hand
 		DeckController deckC = gameDeck.GetComponent<DeckController> ();
-		HandController handC = playerHand.GetComponent<HandController> ();
+		HandController handC = hand.GetComponent<HandController> ();
 
 		// Loops through the player hand and adds a card off the top of the deck
 		for (int x = 0; x<handC.cards.Length; x++) {
-
+			
 			// Adds a card to player hand with an index that matches the index of the top card of the deck
-			handC.AddCard(x, deckC.TopCardIndex(), true);
-
+			handC.AddCard(x, deckC.TopCardIndex(), faceUp);
+			
 			// Hides the top card of the deck to simulate dealing the card out
 			deckC.HideTopCard();
 		}
+		print (deckC.CardsInDeck ()+1 + " cards left in deck");
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		

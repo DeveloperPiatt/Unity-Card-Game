@@ -13,7 +13,6 @@ public class HandController : MonoBehaviour {
 		// cardID -> Determines which card spot in the hand we are adding a card to
 		// cardIndex -> Determines which card texture to display when the card runs showFace()
 		// showFaceUp -> Tells us to either show the face or the card back
-
 		CardController cardController = cards [cardId].GetComponent<CardController> ();
 
 		// Assigning the card the index being passed in
@@ -28,9 +27,8 @@ public class HandController : MonoBehaviour {
 	}	
 
 	public void Reset() {
-
+		print ("Clearing all cards");
 		// Goes through the hand and clears out all the cards in hand
-
 		CardController firstCardController = cards [0].GetComponent<CardController> ();
 		firstCardController.cardIndex = 0;
 		firstCardController.ShowCardOutline();
@@ -39,11 +37,12 @@ public class HandController : MonoBehaviour {
 			CardController cardController = cards[x].GetComponent<CardController>();
 			cardController.HideCard();
 		}
+		print ("Cards cleared");
 	}
 
 	void Start () {
 	
-		Reset ();
+		//Reset ();
 
 	}
 	
