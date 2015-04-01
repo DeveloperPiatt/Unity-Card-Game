@@ -31,6 +31,7 @@ public class DeckController : MonoBehaviour {
 
 		// Randomizing the values in randomFaces
 		// 7 times because why not. Wouldn't be a true shuffle otherwise
+
 		RandomizeIntArray (randomFaces);
 		RandomizeIntArray (randomFaces);
 		RandomizeIntArray (randomFaces);
@@ -66,7 +67,7 @@ public class DeckController : MonoBehaviour {
 			if (rI == x) {
 				// if the random index is the last index in the array, change it to 0
 				// otherwise increment the random index by 1
-				if (rI == rArray.Length) {
+				if (rI == rArray.Length-1) {
 					rI = 0;
 				} else {
 					rI++;

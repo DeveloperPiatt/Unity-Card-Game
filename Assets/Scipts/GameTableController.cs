@@ -10,14 +10,28 @@ public class GameTableController : MonoBehaviour {
 	//DONE Display the 5 cards for the player
 
 	// March 26, 2015
-	//TODO Populate deck to 48 cards
-	//TODO W1-8, H1-8, V1-8
-	//TODO Each card should be in the deck twice
-	//TODO Shuffle the deck before dealing out 5 cards
+	//DONE Populate deck to 48 cards
+	//DONE W1-8, H1-8, V1-8
+	//DONE Each card should be in the deck twice
+	//DONE Shuffle the deck before dealing out 5 cards
+	//DONE Comment code
+
+	// March 31
+	//TODO Add player 2 hand
+	//TODO Add player 3 hand
+	//TODO Add player 4 hand
 	//TODO Comment code
 
+	// Hands of cards
 	public GameObject playerHand;
+	public GameObject cpu2Hand;
+	public GameObject cpu3Hand;
+	public GameObject cpu4Hand;
+
+	// Quick reference to a normal card
 	public GameObject playerCard;
+
+	// Game deck
 	public GameObject gameDeck;
 
 	private int deckSize;
