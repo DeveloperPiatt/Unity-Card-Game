@@ -29,18 +29,55 @@ public class DeckController : MonoBehaviour {
 			}
 		}
 
+		// Randomizing the values in randomFaces
+		// 7 times because why not. Wouldn't be a true shuffle otherwise
+		RandomizeIntArray (randomFaces);
+		RandomizeIntArray (randomFaces);
+		RandomizeIntArray (randomFaces);
+		RandomizeIntArray (randomFaces);
+		RandomizeIntArray (randomFaces);
+		RandomizeIntArray (randomFaces);
+		RandomizeIntArray (randomFaces);
+
 		// Assigns each card in the deck an index and puts the card face down
-		for (int x = 0; x <16; x++) {//<cards.Length; x++) {
+		for (int x = 0; x < cards.Length; x++) {
 			CardController thisCard = cards[x].GetComponent<CardController> ();
 			thisCard.cardIndex = randomFaces[x];
-			//thisCard.ShowBackground();
-			thisCard.ShowFace();
+			thisCard.ShowBackground();
+			//thisCard.ShowFace();
 
 			// keeps track where the top card pointer is at
 			topCard = x;
 		}
 
 		print ("Assigned all "+cards.Length+" cards in deck an index");
+	}
+
+	private void RandomizeIntArray(int[] rArray) {
+		for (int x = 0; x <rArray.Length; x++) {
+			int rI; //random index
+			int vA; //value A
+			int vB; //value B
+
+			vA = rArray[x];
+			rI = Random.Range(0, rArray.Length);
+
+			// avoiding a swap with same index
+			if (rI == x) {
+				// if the random index is the last index in the array, change it to 0
+				// otherwise increment the random index by 1
+				if (rI == rArray.Length) {
+					rI = 0;
+				} else {
+					rI++;
+				}
+			}
+			vB = rArray[rI];
+
+			// swapping values
+			rArray[x] = vB;
+			rArray[rI] = vA;
+		}
 	}
 
 	public void HideTopCard() {
