@@ -6,12 +6,17 @@ public class DragController : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
 	private Vector3 handPosition;
 
-	Transform parentToReturnTo = null;
+	public enum Player{P1, P2, P3, P4};
+	public Player playerPos = Player.P1;
+
+	public Transform parentToReturnTo = null;
 
 	public void OnBeginDrag (PointerEventData eventData) {
 		Debug.Log ("OnBeginDrag");
 		parentToReturnTo = this.transform.parent;
-		//this.transform.SetParent (this.transform.parent.parent);
+		this.transform.SetParent (this.transform.parent.parent);
+
+		GetComponent<CanvasGroup>().blocksRaycasts = false;
 	}
 
 	public void OnDrag (PointerEventData eventData) {
@@ -21,7 +26,8 @@ public class DragController : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
 	public void OnEndDrag (PointerEventData eventData) {
 		Debug.Log ("OnEndDrag");
-		//this.transform.SetParent (parentToReturnTo);
+		this.transform.SetParent (parentToReturnTo);
+		GetComponent<CanvasGroup> ().blocksRaycasts = true;
 		//this.transform.position = handPosition;
 	}
 
