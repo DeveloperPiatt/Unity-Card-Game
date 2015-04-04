@@ -2,18 +2,45 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class DropController : MonoBehaviour, IDropHandler {
+public class DropController : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
-	public DragController.Player playerPos = DragController.Player.P1;
+
 
 	public void OnDrop (PointerEventData eventData) {
 		Debug.Log ("Dropped onto "+gameObject.name);
 
 		DragController dc = eventData.pointerDrag.GetComponent<DragController> ();
 		if (dc != null) {
-			if (playerPos == dc.playerPos) {
-				dc.parentToReturnTo = this.transform;
-			}
+			dc.parentToReturnTo = this.transform;
+
+		}
+	}
+
+	public void OnPointerEnter (PointerEventData eventData) {
+		Debug.Log("Entered "+gameObject.name);
+
+		if (eventData.pointerDrag == null) {
+			return;
+		}
+
+		DragController dc = eventData.pointerDrag.GetComponent<DragController> ();
+		if (dc != null) {
+			dc.placeholderParent = this.transform;
+			
+		}
+	}
+
+	public void OnPointerExit (PointerEventData eventData) {
+		Debug.Log("Exited "+gameObject.name);
+
+		if (eventData.pointerDrag == null) {
+			return;
+		}
+		
+		DragController dc = eventData.pointerDrag.GetComponent<DragController> ();
+		if (dc != null && dc.placeholderParent == this.transform) {
+			dc.placeholderParent = dc.parentToReturnTo;
+			
 		}
 	}
 }
