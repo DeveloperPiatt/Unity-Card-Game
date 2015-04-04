@@ -1,46 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class CardController : MonoBehaviour {
+public class CardCon : MonoBehaviour {
 
 	public int cardIndex;
-	public Texture[] faces;
-	public Texture background;
-	public Texture outline;
-
+	public Sprite[] faces;
+	public Sprite background;
+	public Sprite outline;
+	
 	public void ShowBackground() {
-
+		
 		// Make sure the card is visible and displaying the background texture
-		GetComponent<Renderer> ().enabled = true;
-		GetComponent<Renderer> ().material.mainTexture = background;
-	}
 
+		GetComponent<Image> ().enabled = true;
+		GetComponent<Image> ().sprite = background;
+		//GetComponent<Renderer> ().enabled = true;
+		//GetComponent<Renderer> ().material.mainTexture = background;
+	}
+	
 	public void HideCard() { 
-
+		
 		// Hiding the card from view
-		GetComponent<Renderer> ().enabled = false;
+		GetComponent<Image> ().enabled = false;
+		//GetComponent<Renderer> ().enabled = false;
 	}
-
+	
 	public void ShowFace() {
-
+		
 		// Make sure the card is visible and displaying the face corresponding to the cardIndex
-		GetComponent<Renderer> ().enabled = true;
-		GetComponent<Renderer> ().material.mainTexture = faces[cardIndex];
+		GetComponent<Image> ().enabled = true;
+		GetComponent<Image> ().sprite = faces[cardIndex];
 	}
-
+	
 	public void ShowCardOutline() {
-
+		
 		// Mark sure the card is visible and displaying the card outline
-		GetComponent<Renderer> ().enabled = true;
-		GetComponent<Renderer> ().material.mainTexture = outline;
+		GetComponent<Image> ().enabled = true;
+		GetComponent<Image> ().sprite = outline;
 	}
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
 }
