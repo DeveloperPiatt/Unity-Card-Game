@@ -11,9 +11,13 @@ public class DropController : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 		DragController dc = eventData.pointerDrag.GetComponent<DragController> ();
 		if (dc != null) {
 			dc.parentToReturnTo = this.transform;
-		}
 
-		//dc.enabled = false;
+			// tells the drag controller that it needs to turn itself off
+			dc.canDrag = false;
+
+			// turns off this drop zone so no further cards can be placed
+			this.enabled = false;
+		}
 
 	}
 

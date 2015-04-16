@@ -9,6 +9,7 @@ public class DragController : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
 	public Transform parentToReturnTo = null;
 	public Transform placeholderParent = null;
+	public bool canDrag = true;
 
 	GameObject placeholder = null;
 
@@ -74,7 +75,11 @@ public class DragController : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 		GetComponent<CanvasGroup> ().blocksRaycasts = true;
 		Destroy (placeholder);
 
-		this.enabled = false;
+
+		// stops this card from being dragged someplace else
+		this.enabled = canDrag;
+			
+
 
 	}
 
