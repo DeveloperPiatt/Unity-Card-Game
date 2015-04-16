@@ -4,16 +4,17 @@ using UnityEngine.EventSystems;
 
 public class DropController : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
-	//TODO: Turn off card dragging when it hits a dropzone
-
 	public void OnDrop (PointerEventData eventData) {
+
 		Debug.Log ("Dropped onto "+gameObject.name);
 
 		DragController dc = eventData.pointerDrag.GetComponent<DragController> ();
 		if (dc != null) {
 			dc.parentToReturnTo = this.transform;
-
 		}
+
+		//dc.enabled = false;
+
 	}
 
 	public void OnPointerEnter (PointerEventData eventData) {
