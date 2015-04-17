@@ -18,8 +18,8 @@ public class CardController : MonoBehaviour {
 		HandController cardHand = this.transform.parent.parent.GetComponent<HandController> ();
 		playerNum = cardHand.playerNum;
 
-		Color32 p1Color = new Color32 (0, 221, 255, 255);
-		Color32 p2Color = new Color32 (255, 149, 0, 255);
+		p1Color = new Color32 (0, 221, 255, 255);
+		p2Color = new Color32 (255, 149, 0, 255);
 
 		//setting background color to match player
 		if (playerNum == HandController.PlayerNumber.PLAYER1) {

@@ -15,7 +15,7 @@ public class DragController : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
 	public void OnBeginDrag (PointerEventData eventData) {
 
-		Debug.Log ("OnBeginDrag");
+		//Debug.Log ("OnBeginDrag");
 		
 		parentToReturnTo = this.transform.parent;
 		
@@ -69,7 +69,7 @@ public class DragController : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
 	public void OnEndDrag (PointerEventData eventData) {
 
-		Debug.Log ("OnEndDrag");
+		//Debug.Log ("OnEndDrag");
 		this.transform.SetParent (parentToReturnTo);
 		this.transform.SetSiblingIndex (placeholder.transform.GetSiblingIndex ());
 		GetComponent<CanvasGroup> ().blocksRaycasts = true;
