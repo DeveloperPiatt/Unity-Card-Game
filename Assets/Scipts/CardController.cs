@@ -11,12 +11,37 @@ public class CardController : MonoBehaviour {
 	public Text downValue;
 	public Text leftValue;
 
+	public Color32 p1Color;
+	public Color32 p2Color;
+
 	void setPlayer() {
 		HandController cardHand = this.transform.parent.parent.GetComponent<HandController> ();
 		playerNum = cardHand.playerNum;
 
+		Color32 p1Color = new Color32 (0, 221, 255, 255);
+		Color32 p2Color = new Color32 (255, 149, 0, 255);
+
 		//setting background color to match player
-		//this.GetComponent<Image> ().color = new Color32 (0, 0, 0);
+		if (playerNum == HandController.PlayerNumber.PLAYER1) {
+			this.GetComponent<Image> ().color = p1Color;
+		} else if (playerNum == HandController.PlayerNumber.PLAYER2) {
+			this.GetComponent<Image> ().color = p2Color;
+		}
+
+
+	}
+
+	public void togglePlayer () {
+
+		//checks current card's player value and swaps it. Also swaps color to let us know which player owns card
+
+		if (playerNum == HandController.PlayerNumber.PLAYER1) {
+			playerNum = HandController.PlayerNumber.PLAYER2;
+			this.GetComponent<Image> ().color = p2Color;
+		} else if (playerNum == HandController.PlayerNumber.PLAYER2) {
+			playerNum = HandController.PlayerNumber.PLAYER1;
+			this.GetComponent<Image> ().color = p1Color;
+		}
 	}
 
 
@@ -31,6 +56,7 @@ public class CardController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		setPlayer ();
 		setRandomValues ();
 	}

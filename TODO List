@@ -1,10 +1,12 @@
 TODO List
 	
-	+ Turn off drop zone when a card is placed on the game board.
-		- Might be better to learn how to limit it to one card instead
-	+ Assign random values to cards when they are generated
-	+ change BG color of card in hand depending on what player owns card
+
+	
 
 DONE List
 
 	+ Turn off dragging on cards once they hit the game board.
+	+ Turn off drop zone when a card is placed on the game board.
+		- Might be better to learn how to limit it to one card instead
+	+ Assign random values to cards when they are generated
+	+ change BG color of card in hand depending on what player owns card
