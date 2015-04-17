@@ -36,7 +36,8 @@ public class DropController : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 
 				CardController cardToBattle = topDropZone.GetChild(0).GetComponent<CardController>();
 
-				if (int.Parse(myCard.topValue.text) > int.Parse(cardToBattle.downValue.text)) {
+				//if my card has a higher value than target card AND the two cards don't belong to the same player
+				if (int.Parse(myCard.topValue.text) > int.Parse(cardToBattle.downValue.text) && myCard.playerNum != cardToBattle.playerNum) {
 					cardToBattle.togglePlayer();
 				}
 
@@ -50,8 +51,9 @@ public class DropController : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 			if (rightDropZone.childCount > 0) {
 				
 				CardController cardToBattle = rightDropZone.GetChild(0).GetComponent<CardController>();
-				
-				if (int.Parse(myCard.rightValue.text) > int.Parse(cardToBattle.leftValue.text)) {
+
+				//if my card has a higher value than target card AND the two cards don't belong to the same player
+				if (int.Parse(myCard.rightValue.text) > int.Parse(cardToBattle.leftValue.text) && myCard.playerNum != cardToBattle.playerNum) {
 					cardToBattle.togglePlayer();
 				}
 				
@@ -66,7 +68,8 @@ public class DropController : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 
 				CardController cardToBattle = bottomDropZone.GetChild(0).GetComponent<CardController>();
 
-				if (int.Parse(myCard.downValue.text) > int.Parse(cardToBattle.topValue.text)) {
+				//if my card has a higher value than target card AND the two cards don't belong to the same player
+				if (int.Parse(myCard.downValue.text) > int.Parse(cardToBattle.topValue.text) && myCard.playerNum != cardToBattle.playerNum) {
 					cardToBattle.togglePlayer();
 				}
 
@@ -80,8 +83,9 @@ public class DropController : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 			if (leftDropZone.childCount > 0) {
 				
 				CardController cardToBattle = leftDropZone.GetChild(0).GetComponent<CardController>();
-				
-				if (int.Parse(myCard.leftValue.text) > int.Parse(cardToBattle.rightValue.text)) {
+
+				//if my card has a higher value than target card AND the two cards don't belong to the same player
+				if (int.Parse(myCard.leftValue.text) > int.Parse(cardToBattle.rightValue.text) && myCard.playerNum != cardToBattle.playerNum) {
 					cardToBattle.togglePlayer();
 				}
 				

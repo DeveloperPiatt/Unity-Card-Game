@@ -1,5 +1,6 @@
 TODO List
 	
+	
 	+ establish a turn order
 	
 
@@ -12,5 +13,6 @@ DONE List
 	+ change BG color of card in hand depending on what player owns card
 	+ cards need to do basic battle
 		- checks all directions and battles. if defender loses, it flips
+	+++ fix bug where a player can accidentally flip his own card if he plays next to it
 		
 		
