@@ -12,7 +12,7 @@ public class CardController : MonoBehaviour {
 	public Text leftValue;
 
 	public Color32 p1Color;
-	public Color32 p2Color;
+	public Color32 p2Color;	
 
 	void setPlayer() {
 		HandController cardHand = this.transform.parent.parent.GetComponent<HandController> ();
