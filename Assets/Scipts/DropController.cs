@@ -22,6 +22,17 @@ public class DropController : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 
 			// turns off this drop zone so no further cards can be placed
 			this.enabled = false;
+
+			// next turn time
+			Transform gameScene = this.transform.parent.parent;
+			foreach (Transform t in gameScene) {
+				if (t.name == "GAME_INFO") {
+					//Debug.Log("GAME_INFO found");
+					t.GetComponent<TurnController>().nextTurn();
+					break;
+				}
+			}
+
 		}
 
 		CardController myCard = eventData.pointerDrag.GetComponent<CardController>();
@@ -96,7 +107,7 @@ public class DropController : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 	}
 
 	public void OnPointerEnter (PointerEventData eventData) {
-		Debug.Log("Entered "+gameObject.name);
+		//Debug.Log("Entered "+gameObject.name);
 
 		if (eventData.pointerDrag == null) {
 			return;

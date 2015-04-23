@@ -13,10 +13,14 @@ public class DragController : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
 	GameObject placeholder = null;
 
+	Transform gameInfo;
+	Transform gameScene;
+
 	public void OnBeginDrag (PointerEventData eventData) {
 
 		//Debug.Log ("OnBeginDrag");
-		
+		Debug.Log (this.transform.GetComponent<CardController> ().playerNum);
+
 		parentToReturnTo = this.transform.parent;
 		
 		placeholder = new GameObject ();
@@ -61,10 +65,6 @@ public class DragController : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 		}
 		
 		placeholder.transform.SetSiblingIndex(newSiblingIndex);
-
-
-			
-
 	}
 
 	public void OnEndDrag (PointerEventData eventData) {
@@ -85,6 +85,16 @@ public class DragController : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
 	void Start () {
 		//handPosition = this.transform.position;
+		gameScene = this.transform.parent.parent.parent;
+		foreach (Transform t in gameScene) {
+			if (t.name == "GAME_INFO") {
+				//Debug.Log("GAME_INFO found");
+				gameInfo = t;
+				break;
+			}
+		}
+
+
 	}
 
 }
