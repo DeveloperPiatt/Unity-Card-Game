@@ -8,11 +8,13 @@ public class ScoreController : MonoBehaviour {
 	public Transform redScore;
 
 	public void blueCapture () {
-
+		addBluePoint ();
+		removeRedPoint ();
 	}
 
-	public void redCature () {
-
+	public void redCapture () {
+		addRedPoint ();
+		removeBluePoint ();
 	}
 
 	public void addBluePoint () {
@@ -49,8 +51,7 @@ public class ScoreController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		addBluePoint ();
-		addRedPoint ();
+
 	}
 	
 	// Update is called once per frame

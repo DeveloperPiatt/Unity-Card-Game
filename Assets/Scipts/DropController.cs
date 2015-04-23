@@ -96,7 +96,7 @@ public class DropController : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 	}
 
 	public void OnPointerEnter (PointerEventData eventData) {
-		//Debug.Log("Entered "+gameObject.name);
+		Debug.Log("Entered "+gameObject.name);
 
 		if (eventData.pointerDrag == null) {
 			return;
